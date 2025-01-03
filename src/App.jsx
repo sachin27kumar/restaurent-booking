@@ -5,14 +5,14 @@ const App = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("https://restaurent-booking-omega.vercel.app/api/bookings")
+    fetch("https://restaurent-booking-omega.vercel.app")
       .then((response) => response.json())
       .then((data) => setBookings(data))
       .catch((error) => console.error("Error fetching bookings:", error));
   }, []);
 
   const handleBookingSubmit = (formData) => {
-    fetch("https://restaurent-booking-omega.vercel.app/api/bookings", {
+    fetch("https://restaurent-booking-omega.vercel.app", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -36,7 +36,7 @@ const App = () => {
   };
 
   const handleDeleteBooking = (id) => {
-    fetch(`https://restaurent-booking-omega.vercel.app/api/bookings/${id}`, {
+    fetch(`https://restaurent-booking-omega.vercel.app/${id}`, {
       method: "DELETE",
     })
       .then(() => {
