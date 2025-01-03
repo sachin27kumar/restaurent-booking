@@ -5,14 +5,14 @@ const App = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/bookings")
+    fetch("https://restaurent-booking-omega.vercel.app/api/bookings")
       .then((response) => response.json())
       .then((data) => setBookings(data))
       .catch((error) => console.error("Error fetching bookings:", error));
   }, []);
 
   const handleBookingSubmit = (formData) => {
-    fetch("http://localhost:5000/api/bookings", {
+    fetch("https://restaurent-booking-omega.vercel.app/api/bookings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -36,7 +36,9 @@ const App = () => {
   };
 
   const handleDeleteBooking = (id) => {
-    fetch(`http://localhost:5000/api/bookings/${id}`, { method: "DELETE" })
+    fetch(`https://restaurent-booking-omega.vercel.app/api/bookings/${id}`, {
+      method: "DELETE",
+    })
       .then(() => {
         setBookings(bookings.filter((booking) => booking.id !== id));
         setMessage("Booking deleted.");
